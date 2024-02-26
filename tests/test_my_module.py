@@ -16,13 +16,13 @@ class TestCalculator(unittest.TestCase):
 
     # Removing test_multiply to make the coverage partial.
 
-    # def test_divide(self):
-    #     self.assertEqual(self.calculator.divide(10, 2), 5)
-    #     # This test covers one case but does not cover division by zero.
+    def test_divide(self):
+        self.assertEqual(self.calculator.divide(10, 2), 5)
+        # This test covers one case but does not cover division by zero.
 
-    # def test_multiply_bug(self):
-    #     self.assertEqual(self.calculator.multiply(3, 4), 12)
-    #     # This test expects 12, but due to the bug, it will fail.
+    def test_multiply_bug(self):
+        self.assertEqual(self.calculator.multiply(3, 4), 12)
+        # This test expects 12, but due to the bug, it will fail.
 
     # Removing test_divide_by_zero to make the coverage partial.
         
