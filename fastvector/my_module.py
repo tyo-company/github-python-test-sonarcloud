@@ -28,3 +28,4 @@ class ConditionalProcessor:
             return "Processed for 2"
         elif x == 3:
             return "Processed for 3"
+        
