@@ -10,18 +10,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
-
-      # Set up SonarQube scan
-      # - name: SonarQube Scan
-      #   uses: sonarsource/sonarqube-scan-action@master
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      #     SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       # Set up Python 3.10
       - name: Set up Python 3.10
@@ -49,13 +41,16 @@ jobs:
         run: |
           pytest --cov --cov-report=xml
 
-          steps:
-      - uses: actions/checkout@v3
+      # Checkout the code again for SonarCloud
+      - name: Checkout code for SonarCloud
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
+      # Run SonarCloud Scan
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
-         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Uncomment if needed to get PR information
