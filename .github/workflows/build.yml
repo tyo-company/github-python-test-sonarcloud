@@ -40,19 +40,6 @@ jobs:
       - name: Test with pytest
         run: |
           pytest --cov --cov-report=xml
-          ls -al
-
-      # Ensure coverage.xml is in the root directory
-      - name: Ensure coverage report is in the root directory
-        run: |
-          ls -al
-          cp coverage.xml coverage.xml
-
-      # Checkout the code again for SonarCloud
-      - name: Checkout code for SonarCloud
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       # Run SonarCloud Scan
       - name: SonarCloud Scan
