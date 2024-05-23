@@ -26,17 +26,17 @@ class TestCalculator(unittest.TestCase):
 
     # Removing test_divide_by_zero to make the coverage partial.
         
-# class TestConditionalProcessor(unittest.TestCase):
-#     def setUp(self):
-#         self.processor = ConditionalProcessor()
+class TestConditionalProcessor(unittest.TestCase):
+    def setUp(self):
+        self.processor = ConditionalProcessor()
 
-#     def test_process_for_1(self):
-#         self.assertEqual(self.processor.process(1), "Processed for 1")
-        # This test covers the condition for x == 1.
+    def test_process_for_1(self):
+        self.assertEqual(self.processor.process(1), "Processed for 1")
+        This test covers the condition for x == 1.
 
-    # def test_process_for_3(self):
-    #     self.assertEqual(self.processor.process(3), "Processed for 3")
-    #     # This test covers the condition for x == 3, but not for x == 2.
+    def test_process_for_3(self):
+        self.assertEqual(self.processor.process(3), "Processed for 3")
+        # This test covers the condition for x == 3, but not for x == 2.
 
         
 if __name__ == '__main__':
