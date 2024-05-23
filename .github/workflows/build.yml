@@ -41,6 +41,11 @@ jobs:
         run: |
           pytest --cov --cov-report=xml
 
+      # Ensure coverage.xml is in the root directory
+      - name: Move coverage report
+        run: |
+          mv coverage.xml .
+
       # Checkout the code again for SonarCloud
       - name: Checkout code for SonarCloud
         uses: actions/checkout@v3
@@ -53,4 +58,6 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Uncomment if needed to get PR information
+        with:
+          args: >
+            -Dsonar.python.coverage.reportPaths=coverage.xml
