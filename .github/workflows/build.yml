@@ -40,11 +40,13 @@ jobs:
       - name: Test with pytest
         run: |
           pytest --cov --cov-report=xml
+          ls -al
 
       # Ensure coverage.xml is in the root directory
-      - name: Move coverage report
+      - name: Ensure coverage report is in the root directory
         run: |
-          mv coverage.xml .
+          ls -al
+          cp coverage.xml coverage.xml
 
       # Checkout the code again for SonarCloud
       - name: Checkout code for SonarCloud
